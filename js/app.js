@@ -1,47 +1,102 @@
 console.log("working");
+// start();
 
-function getChicken(){
-  var selection = document.getElementsByTagName("button");
+Game = {
+  playerOne: ""
+
+}
+var playerOne = null;
+var playerTwo = null;
+
+playerOneSelect()
+
+function playerOneSelect() {
+  selection = document.getElementsByClassName("test");
   for (i = 0; i < selection.length; i ++){
-    selection[i].addEventListener("click", function(){
-      return this.getAttribute("id");
-
+    console.log("looping")
+    thing = selection[i];
+    thing.addEventListener("click", getPlayerOne)
+    setTimeout(function(){
+      thing.removeEventListener("click", getPlayerOne)
+    }, 5000)
+    setTimeout(function(){
+      thing.addEventListener("click", getPlayerTwo)
+    }, 10000)
+    setTimeout(function(){
+      thing.removeEventListener("click", getPlayerOne)
     })
+    
+    
   }
 }
-function getPlayerOneChicken() = getChicken();
 
-var playerTwoChicken = getChicken();
-  //select a chicken
 
+
+
+
+function getPlayerOne() {
+  console.log("hello")
+  playerOne = this.id;
+  console.log("Player One is " + playerOne)
+  // this.removeEventListener("click", getPlayerOne)
+}
+
+function getPlayerTwo() {
+  console.log("hello")
+  playerTwo = this.id;
+  console.log("Player Two is" + playerTwo)
+}
+
+// var getChicken = function(){
+//   var selection = document.getElementsByTagName("button");
+//   for (i = 0; i < selection.length; i ++){
+//     selection[i].addEventListener("click", function(){
+//       return this.getAttribute("id");
+
+//     })
+//   }
+// }
+
+
+
+
+// function start(){
+//   console.log("Player 1 get chicken!")
+//   playerOne = getChicken;
+//   if (playerOne == true){
+//     console.log("Player 2 get chicken!")
+//     playerTwo = getChicken;
+//     //start fight
+//   }
+// }
 
 // Chicken objects
 var Chicken = {
   chicken_name: "Something",
   health: 0,
   speed: 0,
-  move1:function one(){
+  move1:function(target){
 
   },
-  move2:function two(){
+  move2:function(target){
 
   },
-  move3:function(){
+  move3:function(target){
 
   },
-  move4:function(){
+  move4:function(target){
     
   },
-  move5:function(){
+  move5:function(target){
     
   },
-  move6:function(){
+  move6:function(target){
     
   },
-  move7:function(){
+  move7:function(target){
     
   },
-  move8: function(){
+  move8:function(target){
     
   }
 }
@@ -60,7 +115,7 @@ var chicken2 = Object.create(Chicken);
   
   
 
-getChicken();
+
 
 //chicken array (folder?)
 
