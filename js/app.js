@@ -1,36 +1,57 @@
 console.log("working");
 // start();
 
-Game = {
-  playerOne: ""
 
-}
-var playerOne = null;
-var playerTwo = null;
+// var playerOne = null;
+// var playerTwo = null;
 
-playerOneSelect()
+playerOneButton = document.getElementById("playerOneButton")
+playerOneButton.addEventListener("click", playerOneSelect)
 
+playerTwoButton = document.getElementById("playerTwoButton")
+playerTwoButton.addEventListener("click", playerTwoSelect)
+
+
+
+
+
+//the following doesn't work atm
 function playerOneSelect() {
   selection = document.getElementsByClassName("test");
   for (i = 0; i < selection.length; i ++){
-    console.log("looping")
-    thing = selection[i];
-    thing.addEventListener("click", getPlayerOne)
-    setTimeout(function(){
-      thing.removeEventListener("click", getPlayerOne)
-    }, 5000)
-    setTimeout(function(){
-      thing.addEventListener("click", getPlayerTwo)
-    }, 10000)
-    setTimeout(function(){
-      thing.removeEventListener("click", getPlayerOne)
-    })
     
     
+    selection[i].addEventListener("click", getPlayerOne)
+
+    for (i = 0; i < selection.length; i ++){
+    // setTimeout(function(){
+    //   this.removeEventListener("click", getPlayerOne)
+    // }, 5000)
   }
 }
+    // setTimeout(function(){
+    //   thing.addEventListener("click", getPlayerTwo)
+    // }, 10000)
+    // setTimeout(function(){
+    //   thing.removeEventListener("click", getPlayerTwo)
+    // }, 15000)
+    
+    
+  
+}
+function playerTwoSelect() {
+  selection = document.getElementsByClassName("test");
+  for (i = 0; i < selection.length; i ++){
 
+    selection[i].addEventListener("click", getPlayerTwo)
 
+    for (i = 0; i < selection.length; i ++){
+      setTimeout(function(){
+        selection[i].removeEventListener("click", getPlayerTwo)
+      }, 5000)
+    }
+  }
+}
 
 
 
@@ -38,13 +59,12 @@ function getPlayerOne() {
   console.log("hello")
   playerOne = this.id;
   console.log("Player One is " + playerOne)
-  // this.removeEventListener("click", getPlayerOne)
 }
 
 function getPlayerTwo() {
   console.log("hello")
   playerTwo = this.id;
-  console.log("Player Two is" + playerTwo)
+  console.log("Player Two is " + playerTwo)
 }
 
 // var getChicken = function(){
