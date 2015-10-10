@@ -67,28 +67,55 @@ function getPlayerTwo(){
 function fight(){
   switch (playerOne) {
     case "Gary":
-      p1chicken1 = Object.create(Chicken);
-      p1chicken1.health = 100,
-      p1chicken1.speed = 7,
-      p1chicken1.name = "Gary"
+      p1chicken = Object.create(Chicken);
+      p1chicken.health = 100,
+      p1chicken.speed = 7,
+      p1chicken.name = "Gary"
         console.log("p1 chooses Gary!")
         break;
     case "Ash":
-      p1chicken2 = Object.create(Chicken);
-      p1chicken2.health = 100,
-      p1chicken2.speed = 10,
-      p1chicken2.name = "Ash"
+      p1chicken = Object.create(Chicken);
+      p1chicken.health = 100,
+      p1chicken.speed = 10,
+      p1chicken.name = "Ash"
         console.log("p1 chooses Ash!")
         break;
     case "Steve":
-      p1chicken3 = Object.create(Chicken);
-      p1chicken3.health = 80,
-      p1chicken3.speed = 10,
-      p1chicken3.name = "Steve"
+      p1chicken = Object.create(Chicken);
+      p1chicken.health = 80,
+      p1chicken.speed = 10,
+      p1chicken.name = "Steve"
         console.log("p1 chooses Steve!")
         break;
   }
-
+  switch (playerTwo) {
+    case "Gary":
+      p2chicken = Object.create(Chicken);
+      p2chicken.health = 100,
+      p2chicken.speed = 7,
+      p2chicken.name = "Gary"
+        console.log("p2 chooses Gary!")
+        break;
+    case "Ash":
+      p2chicken = Object.create(Chicken);
+      p2chicken.health = 100,
+      p2chicken.speed = 10,
+      p2chicken.name = "Ash"
+        console.log("p2 chooses Ash!")
+        break;
+    case "Steve":
+      p2chicken = Object.create(Chicken);
+      p2chicken.health = 80,
+      p2chicken.speed = 10,
+      p2chicken.name = "Steve"
+        console.log("p2 chooses Steve!")
+        break;
+  }
+  function getPlayerOneMove(move){
+    var moves = [0,1,2,3]
+    console.log("select 0 1 2 or 3")
+    
+  }
 }
 
 
