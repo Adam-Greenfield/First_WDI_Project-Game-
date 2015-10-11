@@ -73,13 +73,20 @@ function fight(){
       p1chicken.health = 100,
       p1chicken.speed = 7,
       p1chicken.name = "Gary"
+      p1chicken.move1 = Chicken.moveOne
+      p1chicken.move2 = Chicken.moveTwo
+      p1chicken.move3 = Chicken.moveThree
+
+
         console.log("p1 chooses Gary!")
         break;
     case "Ash":
       p1chicken = Object.create(Chicken);
       p1chicken.health = 100,
       p1chicken.speed = 10,
-      p1chicken.name = "Ash"
+      p1chicken.name = "Ash",
+      p1chicken.move1 = Chicken.moveTwo
+      p1chicken.move2 = Chicken.moveThree
         console.log("p1 chooses Ash!")
         break;
     case "Steve":
@@ -114,17 +121,29 @@ function fight(){
         break;
   }
   function getPlayerOneMove(){
-    var move = document.getElementsByClassName("moves");
-    for (i = 0; i < move.length; i ++){
+    var moves = document.getElementsByClassName("moves");
+    for (i = 0; i < moves.length; i ++){
       moves[i].addEventListener("click", executeMove)
     }
   }
+  getPlayerOneMove()
 }
 function executeMove(){
+  console.log("Choose a move")
   if (playerOneMove == null){
-    console.log("Choose a move")
     switch (this.id){
-      case "move1"
+      case "move1":
+      p1chicken.move1(p2chicken)
+      break;
+      case "move2":
+      p1chicken.move2(p2chicken)
+      break;
+      case "move3":
+      p1chicken.move3(p2chicken)
+      break;
+      case "move4":
+      p1chicken.move4(p2chicken)
+      break;
     }
   }
 }
@@ -134,28 +153,28 @@ var Chicken = {
   chicken_name: "Something",
   health: 0,
   speed: 0,
-  move1:function oneHit(target){
+  moveOne:function oneHit(target){
     target.health = target.health - 10
   },
-  move2:function twoHit(target){
+  moveTwo:function twoHit(target){
     target.health = target.health - 20
   },
-  move3:function(target){
-
+  moveThree:function threeHit(target){
+    target.speed = target.speed - 2
   },
-  move4:function(target){
+  moveFour:function(target){
     
   },
-  move5:function(target){
+  moveFive:function(target){
     
   },
-  move6:function(target){
+  moveSix:function(target){
     
   },
-  move7:function(target){
+  moveSeven:function(target){
     
   },
-  move8:function(target){
+  moveEight:function(target){
     
   }
 }
