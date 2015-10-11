@@ -34,12 +34,12 @@ function playerOneSelect(){
     // setTimeout(function(){
     //   thing.removeEventListener("click", getPlayerTwo)
     // }, 15000)
-    
-    
-  
+
+
+
 // }
 function playerTwoSelect(){
-  
+
   selection = document.getElementsByClassName("test");
   for (i = 0; i < selection.length; i ++){
 
@@ -52,82 +52,93 @@ function playerTwoSelect(){
 
 function getPlayerOne(){
   if (playerOne == null){
-  playerOne = this.id;
+    playerOne = this.id;
   }
   else {console.log("One already set")}
-  console.log("Player One is " + playerOne)
+    console.log("Player One is " + playerOne)
 }
 
 function getPlayerTwo(){
   if (playerTwo == null){
-  playerTwo = this.id;
+    playerTwo = this.id;
   }
   else {console.log("Two already set")}
-  console.log("Player Two is " + playerTwo)
+    console.log("Player Two is " + playerTwo)
 }
 
 function fight(){
   switch (playerOne) {
     case "Gary":
-      p1chicken = Object.create(Chicken);
-      p1chicken.health = 100,
-      p1chicken.speed = 7,
-      p1chicken.name = "Gary"
-      p1chicken.move1 = Chicken.moveOne
-      p1chicken.move2 = Chicken.moveTwo
-      p1chicken.move3 = Chicken.moveThree
+    p1chicken = Object.create(Chicken);
+    p1chicken.health = 100,
+    p1chicken.speed = 7,
+    p1chicken.name = "Gary"
+    p1chicken.move1 = Chicken.moveOne
+    p1chicken.move2 = Chicken.moveTwo
+    p1chicken.move3 = Chicken.moveThree
 
 
-        console.log("p1 chooses Gary!")
-        break;
+    console.log("p1 chooses Gary!")
+    break;
     case "Ash":
-      p1chicken = Object.create(Chicken);
-      p1chicken.health = 100,
-      p1chicken.speed = 10,
-      p1chicken.name = "Ash",
-      p1chicken.move1 = Chicken.moveTwo
-      p1chicken.move2 = Chicken.moveThree
-        console.log("p1 chooses Ash!")
-        break;
+    p1chicken = Object.create(Chicken);
+    p1chicken.health = 100,
+    p1chicken.speed = 10,
+    p1chicken.name = "Ash",
+    p1chicken.move1 = Chicken.moveTwo
+    p1chicken.move2 = Chicken.moveThree
+    console.log("p1 chooses Ash!")
+    break;
     case "Steve":
-      p1chicken = Object.create(Chicken);
-      p1chicken.health = 80,
-      p1chicken.speed = 10,
-      p1chicken.name = "Steve"
-        console.log("p1 chooses Steve!")
-        break;
+    p1chicken = Object.create(Chicken);
+    p1chicken.health = 80,
+    p1chicken.speed = 10,
+    p1chicken.name = "Steve"
+    console.log("p1 chooses Steve!")
+    break;
   }
   switch (playerTwo) {
     case "Gary":
-      p2chicken = Object.create(Chicken);
-      p2chicken.health = 100,
-      p2chicken.speed = 7,
-      p2chicken.name = "Gary"
-        console.log("p2 chooses Gary!")
-        break;
+    p2chicken = Object.create(Chicken);
+    p2chicken.health = 100,
+    p2chicken.speed = 7,
+    p2chicken.name = "Gary"
+    console.log("p2 chooses Gary!")
+    break;
     case "Ash":
-      p2chicken = Object.create(Chicken);
-      p2chicken.health = 100,
-      p2chicken.speed = 10,
-      p2chicken.name = "Ash"
-        console.log("p2 chooses Ash!")
-        break;
+    p2chicken = Object.create(Chicken);
+    p2chicken.health = 100,
+    p2chicken.speed = 10,
+    p2chicken.name = "Ash"
+    console.log("p2 chooses Ash!")
+    break;
     case "Steve":
-      p2chicken = Object.create(Chicken);
-      p2chicken.health = 80,
-      p2chicken.speed = 10,
-      p2chicken.name = "Steve"
-        console.log("p2 chooses Steve!")
-        break;
+    p2chicken = Object.create(Chicken);
+    p2chicken.health = 80,
+    p2chicken.speed = 10,
+    p2chicken.name = "Steve"
+    console.log("p2 chooses Steve!")
+    break;
   }
-  function getPlayerOneMove(){
-    var moves = document.getElementsByClassName("moves");
-    for (i = 0; i < moves.length; i ++){
-      moves[i].addEventListener("click", executeMove)
-    }
+  if (p1chicken.speed > p2chicken.speed){
+   getPlayerOneMove()
+ }
+ else getPlayerTwoMove()
+} 
+function getPlayerOneMove(){
+  var moves = document.getElementsByClassName("moves");
+  for (i = 0; i < moves.length; i ++){
+    moves[i].addEventListener("click", executeMove)
   }
-  getPlayerOneMove()
 }
+
+function getPlayerTwoMove(){
+  var moves = document.getElementsByClassName("moves");
+  for (i = 0; i < moves.length; i ++){
+    moves[i].addEventListener("click", executeMove)
+  }
+}
+
 function executeMove(){
   console.log("Choose a move")
   if (playerOneMove == null){
@@ -146,8 +157,29 @@ function executeMove(){
       break;
     }
   }
+  // else 
 }
 
+function executeMove(){
+  console.log("Choose a move")
+  if (playerTwoMove == null){
+    switch (this.id){
+      case "move1":
+      p2chicken.move1(p1chicken)
+      break;
+      case "move2":
+      p2chicken.move2(p1chicken)
+      break;
+      case "move3":
+      p2chicken.move3(p1chicken)
+      break;
+      case "move4":
+      p2chicken.move4(p1chicken)
+      break;
+    }
+  }
+  // else 
+}
 // Chicken objects
 var Chicken = {
   chicken_name: "Something",
@@ -163,25 +195,25 @@ var Chicken = {
     target.speed = target.speed - 2
   },
   moveFour:function(target){
-    
+
   },
   moveFive:function(target){
-    
+
   },
   moveSix:function(target){
-    
+
   },
   moveSeven:function(target){
-    
+
   },
   moveEight:function(target){
-    
+
   }
 }
 
 
 
-  
+
 
 
 // var chicken4 = Object.create(Chicken);
