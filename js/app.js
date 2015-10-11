@@ -4,6 +4,8 @@ console.log("working");
 
 var playerOne = null;
 var playerTwo = null;
+var playerOneMove = null;
+var playerTwoMove = null;
 
 playerOneButton = document.getElementById("playerOneButton")
 playerOneButton.addEventListener("click", playerOneSelect)
@@ -111,13 +113,21 @@ function fight(){
         console.log("p2 chooses Steve!")
         break;
   }
-  function getPlayerOneMove(move){
-    var moves = [0,1,2,3]
-    console.log("select 0 1 2 or 3")
-    
+  function getPlayerOneMove(){
+    var move = document.getElementsByClassName("moves");
+    for (i = 0; i < move.length; i ++){
+      moves[i].addEventListener("click", executeMove)
+    }
   }
 }
-
+function executeMove(){
+  if (playerOneMove == null){
+    console.log("Choose a move")
+    switch (this.id){
+      case "move1"
+    }
+  }
+}
 
 // Chicken objects
 var Chicken = {
