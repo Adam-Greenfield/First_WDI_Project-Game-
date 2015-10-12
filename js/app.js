@@ -213,6 +213,7 @@ function fight(){
     break;
   }
   changeButtons()
+  displaydata()
 } 
 function getPlayerOneMove(){
   var moves1 = document.getElementsByClassName("p1moves");
@@ -308,6 +309,17 @@ function executeTwoMove(){
       playerTwoHit()
       playerOneHit()
     }
+    else {
+      var rand = Math.random()
+      if (rand < 0.50){
+        playerTwoHit()
+        playerOneHit()
+      }
+      else {
+        playerOneHit()
+        playerTwoHit()
+      }
+    }
     function checkForKo(){
       if (p1chicken.heath <= 0){
         console.log("p2 has won!")
@@ -317,6 +329,7 @@ function executeTwoMove(){
       }
     }
     checkForKo()
+    displaydata()
   }
 // else 
 
@@ -408,11 +421,19 @@ function changeButtons(){
 
 function displaydata(){
   var playerOneHealth = document.getElementById("p1Health")
+  playerOneHealth.innerHTML = "Health " + p1chicken.health
   var playerOneSpeed = document.getElementById("p1Speed")
+  playerOneSpeed.innerHTML = "Speed: " + p1chicken.speed
   var playerOneArmour = document.getElementById("p1Armour")
+  playerOneArmour.innerHTML = "Armour: " + p1chicken.armour
   var playerTwoHealth = document.getElementById("p2Health")
+  playerTwoHealth.innerHTML = "Health: " + p2chicken.health
   var playerTwoSpeed = document.getElementById("p2Speed")
+  playerTwoSpeed.innerHTML = "Speed: " + p2chicken.speed
   var playerTwoArmour = document.getElementById("p2Armour")
+  playerTwoArmour.innerHTML = "Armour: " + p2chicken.armour
+
+
 }
 
 
