@@ -127,6 +127,7 @@ function getPlayerTwo(){
 }
 
 function fight(){
+
   switch (playerOne) {
     case "Gary":
     p1chicken = Object.create(Chicken);
@@ -153,7 +154,7 @@ function fight(){
     p1chicken.move1 = Chicken.trip
     p1chicken.move2 = Chicken.topple
     p1chicken.move3 = Chicken.desperation
-    p1chicken.move4 = Chicken.peck
+    p1chicken.move4 = Chicken.restore
     console.log("p1 chooses Ash!")
     break;
     case "Steve":
@@ -163,9 +164,9 @@ function fight(){
     p1chicken.speed = 10,
     p1chicken.armour = 3,
     p1chicken.name = "Steve"
-    p1chicken.move1 = Chicken.topple
+    p1chicken.move1 = Chicken.peck
     p1chicken.move2 = Chicken.trip
-    p1chicken.move3 =
+    p1chicken.move3 = Chicken.armourSwitch
     p1chicken.move4 = Chicken.restore
     console.log("p1 chooses Steve!")
     break;
@@ -204,14 +205,14 @@ function fight(){
     p2chicken.speed = 10,
     p2chicken.armour = 3,
     p2chicken.name = "Steve"
-    p2chicken.move1 = Chicken.topple
+    p2chicken.move1 = Chicken.peck
     p2chicken.move2 = Chicken.trip
-    p2chicken.move3 =
-    p2chicken.move4 =
+    p2chicken.move3 = Chicken.armourSwitch
+    p2chicken.move4 = Chicken.restore
     console.log("p2 chooses Steve!")
     break;
   }
-
+  changeButtons()
 } 
 function getPlayerOneMove(){
   var moves1 = document.getElementsByClassName("p1moves");
@@ -334,7 +335,7 @@ var Chicken = {
   },
   trip:function(target){
     target.speed = target.speed - 2.5
-    target.health = target.health - 7 
+    target.health = target.health - (10 - target.armour)
   },
   peck:function(target){
     target.health = target.health - (target.maxHealth / 5)
@@ -357,7 +358,52 @@ var Chicken = {
 }
 
 function changeButtons(){
-  
+  var playerOneMoveOne = document.getElementById("p1move1")
+  var playerOneMoveTwo = document.getElementById("p1move2")
+  var playerOneMoveThree = document.getElementById("p1move3")
+  var playerOneMoveFour = document.getElementById("p1move4")
+  var playerTwoMoveOne = document.getElementById("p2move1")
+  var playerTwoMoveTwo = document.getElementById("p2move2")
+  var playerTwoMoveThree = document.getElementById("p2move3")
+  var playerTwoMoveFour = document.getElementById("p2move4")
+
+  switch (p1chicken.name){
+    case "Gary":
+      playerOneMoveOne.innerHTML = "Slash";
+      playerOneMoveTwo.innerHTML = "Topple";
+      playerOneMoveThree.innerHTML = "Vampire Strike";
+      playerOneMoveFour.innerHTML = "Restore";
+      break;
+    case "Ash":
+      playerOneMoveOne.innerHTML = "Trip";
+      playerOneMoveTwo.innerHTML = "Topple";
+      playerOneMoveThree.innerHTML = "Desperation";
+      playerOneMoveFour.innerHTML = "Restore";
+    case "Steve":
+      playerOneMoveOne.innerHTML = "Peck";
+      playerOneMoveTwo.innerHTML = "Trip";
+      playerOneMoveThree.innerHTML = "Armour Switch";
+      playerOneMoveFour.innerHTML = "Restore";
+  }
+
+  switch (p2chicken.name){
+    case "Gary":
+      playerTwoMoveOne.innerHTML = "Slash";
+      playerTwoMoveTwo.innerHTML = "Topple";
+      playerTwoMoveThree.innerHTML = "Vampire Strike";
+      playerTwoMoveFour.innerHTML = "Restore";
+      break;
+    case "Ash":
+      playerTwoMoveOne.innerHTML = "Trip";
+      playerTwoMoveTwo.innerHTML = "Topple";
+      playerTwoMoveThree.innerHTML = "Desperation";
+      playerTwoMoveFour.innerHTML = "Restore";
+    case "Steve":
+      playerTwoMoveOne.innerHTML = "Peck";
+      playerTwoMoveTwo.innerHTML = "Trip";
+      playerTwoMoveThree.innerHTML = "Armour Switch";
+      playerTwoMoveFour.innerHTML = "Restore";
+  }
 }
 
 
@@ -397,24 +443,3 @@ function changeButtons(){
   // new hampshire
   // poowaddle
   // buff laced frizzle
-
-
-//chicken array (folder?)
-
-//move list(var move = function)
-
-//have var move = key in move array
-
-//start function
-//select chicken function
-//determine turn order function
-//start fight function
-
-//LOOP
-//get player 1 move (get elements by attribute move buttons)
-//get player two move
-//trigger move function
-//check for chicken K.O.
-///LOOP
-
-//Declare victor
