@@ -1,12 +1,13 @@
 console.log("working");
 // start();
 
-
+turn: 0
 var playerOne = null;
 var playerTwo = null;
 var playerOneMove = null;
 var playerTwoMove = null;
-
+var pOneMove = null;
+var pTwoMove = null;
 playerOneButton = document.getElementById("playerOneButton")
 playerOneButton.addEventListener("click", playerOneSelect)
 
@@ -16,7 +17,12 @@ playerTwoButton.addEventListener("click", playerTwoSelect)
 fightStartButton = document.getElementById("startFight")
 fightStartButton.addEventListener("click", fight)
 
-
+function disableOne(){
+  document.getElementsByClassName("playerOneMoves").disabled=true;
+}
+function disableTwo(){
+  document.getElementsByClassName("playerTwoMoves").disabled=true;
+}
 
 function playerOneSelect(){
 
@@ -110,6 +116,9 @@ function fight(){
     p2chicken.health = 100,
     p2chicken.speed = 10,
     p2chicken.name = "Ash"
+    p2chicken.move1 = Chicken.moveThree
+    p2chicken.move2 = Chicken.moveTwo
+    p2chicken.move3 = Chicken.moveOne
     console.log("p2 chooses Ash!")
     break;
     case "Steve":
@@ -120,66 +129,86 @@ function fight(){
     console.log("p2 chooses Steve!")
     break;
   }
-  if (p1chicken.speed > p2chicken.speed){
-   getPlayerOneMove()
- }
- else getPlayerTwoMove()
+
 } 
 function getPlayerOneMove(){
-  var moves = document.getElementsByClassName("moves");
-  for (i = 0; i < moves.length; i ++){
-    moves[i].addEventListener("click", executeMove)
+  var moves1 = document.getElementsByClassName("p1moves");
+  for (i = 0; i < moves1.length; i ++){
+    moves1[i].addEventListener("click", executeOneMove)
+
   }
+}
+getPlayerOneMove()
+
+function executeOneMove(){
+  console.log("Choose a move")
+  
+    pOneMove = this.id
+    console.log("pOneMove is " + pOneMove)
+    
 }
 
 function getPlayerTwoMove(){
-  var moves = document.getElementsByClassName("moves");
-  for (i = 0; i < moves.length; i ++){
-    moves[i].addEventListener("click", executeMove)
+  var moves2 = document.getElementsByClassName("p2moves");
+  for (i = 0; i < moves2.length; i ++){
+    moves2[i].addEventListener("click", executeTwoMove)
   }
 }
 
-function executeMove(){
+function executeTwoMove(){
   console.log("Choose a move")
-  if (playerOneMove == null){
-    switch (this.id){
-      case "move1":
-      p1chicken.move1(p2chicken)
-      break;
-      case "move2":
-      p1chicken.move2(p2chicken)
-      break;
-      case "move3":
-      p1chicken.move3(p2chicken)
-      break;
-      case "move4":
-      p1chicken.move4(p2chicken)
-      break;
-    }
-  }
-  // else 
+ 
+    pTwoMove = this.id
+    console.log("pTwoMove is " + pTwoMove)
+    bothMoves();
+  
 }
+  // else 
 
-function executeMove(){
-  console.log("Choose a move")
-  if (playerTwoMove == null){
-    switch (this.id){
-      case "move1":
-      p2chicken.move1(p1chicken)
-      break;
-      case "move2":
-      p2chicken.move2(p1chicken)
-      break;
-      case "move3":
-      p2chicken.move3(p1chicken)
-      break;
-      case "move4":
-      p2chicken.move4(p1chicken)
-      break;
-    }
+function bothMoves(pOneMove, pTwoMove){
+  function playerOneHit(){
+  switch ("pOneMove"){
+    case "p1move1":
+    p1chicken.move1(p2chicken)
+    break;
+    case "p1move2":
+    p1chicken.move2(p2chicken)
+    break;
+    case "p1move3":
+    p1chicken.move3(p2chicken)
+    break;
+    case "p1move4":
+    p1chicken.move4(p2chicken)
+    break;
   }
-  // else 
+  }
+  function playerTwoHit(){
+  switch ("pTwoMove"){
+    case "p2move1":
+    p2chicken.move1(p1chicken)
+    break;
+    case "p2move2":
+    p2chicken.move2(p1chicken)
+    break;
+    case "p2move3":
+    p2chicken.move3(p1chicken)
+    break;
+    case "p2move4":
+    p2chicken.move4(p1chicken)
+    break;
+  }
+  }
+  if (p1chicken.speed > p2chicken.speed){
+   playerOneHit();
+   playerTwoHit();
+ }
+ else if (p2chicken.speed > p1chicken.speed){
+  playerTwoHit
+  playerOneHit
+ }
 }
+// else 
+
 // Chicken objects
 var Chicken = {
   chicken_name: "Something",
