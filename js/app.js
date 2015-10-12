@@ -11,6 +11,27 @@ var pTwoMove = null;
 var p1chicken = null;
 var p1chicken = null;
 
+
+fightComputerButton = document.getElementById("AI_initiate")
+fightComputerButton.addEventListener("click", getCompChicken)
+
+
+function getCompChicken(){
+
+  var rand = Math.random()
+  if (rand <0.33){
+    playerTwo = "Gary"
+  }
+  else if (rand < 0.66){
+    playerTwo = "Ash"
+  }
+  else if (rand < 1){
+    playerTwo = "Steve"
+  }
+  console.log("player two is " + playerTwo)
+
+}
+
 playerOneButton = document.getElementById("playerOneButton")
 playerOneButton.addEventListener("click", playerOneSelect)
 
@@ -59,6 +80,7 @@ function playerTwoSelect(){
 
 
 
+
 function getPlayerOne(){
   if (playerOne == null){
     playerOne = this.id;
@@ -68,11 +90,14 @@ function getPlayerOne(){
 }
 
 function getPlayerTwo(){
+
   if (playerTwo == null){
     playerTwo = this.id;
   }
   else {console.log("Two already set")}
     console.log("Player Two is " + playerTwo)
+  
+
 }
 
 function fight(){
@@ -80,12 +105,14 @@ function fight(){
     case "Gary":
     p1chicken = Object.create(Chicken);
     p1chicken.health = 100,
+    p1chicken.maxHealth = 100,
     p1chicken.speed = 7,
     p1chicken.armour = 2,
     p1chicken.name = "Gary",
     p1chicken.move1 = Chicken.moveOne
     p1chicken.move2 = Chicken.moveTwo
     p1chicken.move3 = Chicken.moveFive
+    p1chicken.move4 = Chicken.moveSeven
 
 
     console.log("p1 chooses Gary!")
@@ -93,6 +120,7 @@ function fight(){
     case "Ash":
     p1chicken = Object.create(Chicken);
     p1chicken.health = 100,
+    p1chicken.maxHealth = 100,
     p1chicken.speed = 10,
     p1chicken.armour = 2,
     p1chicken.name = "Ash",
@@ -103,6 +131,7 @@ function fight(){
     case "Steve":
     p1chicken = Object.create(Chicken);
     p1chicken.health = 80,
+    p1chicken.maxHealth = 80,
     p1chicken.speed = 10,
     p1chicken.armour = 3,
     p1chicken.name = "Steve"
@@ -113,6 +142,7 @@ function fight(){
     case "Gary":
     p2chicken = Object.create(Chicken);
     p2chicken.health = 100,
+    p2chicken.maxHealth = 100,
     p2chicken.speed = 7,
     p2chicken.armour = 4,
     p2chicken.name = "Gary"
@@ -121,6 +151,7 @@ function fight(){
     case "Ash":
     p2chicken = Object.create(Chicken);
     p2chicken.health = 100,
+    p2chicken.maxHealth = 100,
     p2chicken.speed = 10,
     p2chicken.armour = 2,
     p2chicken.name = "Ash"
@@ -132,6 +163,7 @@ function fight(){
     case "Steve":
     p2chicken = Object.create(Chicken);
     p2chicken.health = 80,
+    p2chicken.maxHealth = 80,
     p2chicken.speed = 10,
     p2chicken.armour = 3,
     p2chicken.name = "Steve"
@@ -158,6 +190,7 @@ function executeOneMove(){
 }
 
 function getPlayerTwoMove(){
+  
   var moves2 = document.getElementsByClassName("p2moves");
   for (i = 0; i < moves2.length; i ++){
     moves2[i].addEventListener("click", executeTwoMove)
@@ -201,7 +234,7 @@ function executeTwoMove(){
         p2chicken.move2(p1chicken)
         break;
         case "p2move3":
-        p2chicken.move3(p1chicken)
+        p2chicken.move3(p1chicken, p2chicken)
         break;
         case "p2move4":
         p2chicken.move4(p2chicken)
@@ -233,6 +266,7 @@ function executeTwoMove(){
 // Chicken objects
 var Chicken = {
   chicken_name: "Something",
+  maxHealth: 0,
   health: 0,
   speed: 0,
   armour: 0,
@@ -246,18 +280,19 @@ var Chicken = {
     target.speed = target.speed - 2
   },
   moveFour:function(target){
-    target.armor = 0;
+    target.health = target.health - (target.maxHealth / 5)
 
   },
   moveFive:function(target, self){
     target.health = (target.health - (Math.ceil(Math.random() * 15) + 10))
     self.health = (self.health + Math.ceil(Math.random() * 7) + 7)
   },
-  moveSix:function(target){
-
+  moveSix:function(target, self){
+    target.armor = 1
+    self.armor = self.armor + 5 
   },
   moveSeven:function(target){
-    target.health = target.health + (target.health + !!!SOMETHING)
+    target.health = target.health + (target.maxHealth / 15)
   },
   moveEight:function(target){
 
