@@ -135,10 +135,10 @@ function fight(){
     p1chicken.speed = 7,
     p1chicken.armour = 2,
     p1chicken.name = "Gary",
-    p1chicken.move1 = Chicken.moveOne
-    p1chicken.move2 = Chicken.moveTwo
-    p1chicken.move3 = Chicken.moveFive
-    p1chicken.move4 = Chicken.moveSeven
+    p1chicken.move1 = Chicken.slash
+    p1chicken.move2 = Chicken.topple
+    p1chicken.move3 = Chicken.vampireStrike
+    p1chicken.move4 = Chicken.restore
 
 
     console.log("p1 chooses Gary!")
@@ -150,8 +150,10 @@ function fight(){
     p1chicken.speed = 10,
     p1chicken.armour = 2,
     p1chicken.name = "Ash",
-    p1chicken.move1 = Chicken.moveTwo
-    p1chicken.move2 = Chicken.moveThree
+    p1chicken.move1 = Chicken.trip
+    p1chicken.move2 = Chicken.topple
+    p1chicken.move3 = Chicken.desperation
+    p1chicken.move4 = Chicken.peck
     console.log("p1 chooses Ash!")
     break;
     case "Steve":
@@ -161,6 +163,10 @@ function fight(){
     p1chicken.speed = 10,
     p1chicken.armour = 3,
     p1chicken.name = "Steve"
+    p1chicken.move1 = Chicken.topple
+    p1chicken.move2 = Chicken.trip
+    p1chicken.move3 =
+    p1chicken.move4 = Chicken.restore
     console.log("p1 chooses Steve!")
     break;
   }
@@ -170,8 +176,12 @@ function fight(){
     p2chicken.health = 100,
     p2chicken.maxHealth = 100,
     p2chicken.speed = 7,
-    p2chicken.armour = 4,
+    p2chicken.armour = 2,
     p2chicken.name = "Gary"
+    p2chicken.move1 = Chicken.slash
+    p2chicken.move2 = Chicken.topple
+    p2chicken.move3 = Chicken.vampireStrike
+    p2chicken.move4 = Chicken.restore
     console.log("p2 chooses Gary!")
     break;
     case "Ash":
@@ -181,9 +191,10 @@ function fight(){
     p2chicken.speed = 10,
     p2chicken.armour = 2,
     p2chicken.name = "Ash"
-    p2chicken.move1 = Chicken.moveThree
-    p2chicken.move2 = Chicken.moveTwo
-    p2chicken.move3 = Chicken.moveOne
+    p2chicken.move1 = Chicken.trip
+    p2chicken.move2 = Chicken.topple
+    p2chicken.move3 = Chicken.desperation
+    p2chicken.move4 = Chicken.restore
     console.log("p2 chooses Ash!")
     break;
     case "Steve":
@@ -193,6 +204,10 @@ function fight(){
     p2chicken.speed = 10,
     p2chicken.armour = 3,
     p2chicken.name = "Steve"
+    p2chicken.move1 = Chicken.topple
+    p2chicken.move2 = Chicken.trip
+    p2chicken.move3 =
+    p2chicken.move4 =
     console.log("p2 chooses Steve!")
     break;
   }
@@ -311,36 +326,39 @@ var Chicken = {
   health: 0,
   speed: 0,
   armour: 0,
-  moveOne:function(target){
+  slash:function(target){
     target.health = target.health - ((15 - target.armour) + Math.ceil((Math.random() * 5)))
   },
-  moveTwo:function(target){
+  topple:function(target){
     target.health = target.health - (target.health / 4)
   },
-  moveThree:function(target){
-    target.speed = target.speed - 2
+  trip:function(target){
+    target.speed = target.speed - 2.5
+    target.health = target.health - 7 
   },
-  moveFour:function(target){
+  peck:function(target){
     target.health = target.health - (target.maxHealth / 5)
 
   },
-  moveFive:function(target, self){
+  vampireStrike:function(target, self){
     target.health = (target.health - (Math.ceil(Math.random() * 15) + 10))
     self.health = (self.health + Math.ceil(Math.random() * 7) + 7)
   },
-  moveSix:function(target, self){
+  armourSwitch:function(target, self){
     target.armor = 1
     self.armor = self.armor + 5 
   },
-  moveSeven:function(target){
+  restore:function(target){
     target.health = target.health + (target.maxHealth / 15)
   },
-  moveEight:function(target){
-
+  desperation:function(target, self){
+    target.health = target.health - (self.maxHealth - self.health) / 2
   }
 }
 
-
+function changeButtons(){
+  
+}
 
 
 
