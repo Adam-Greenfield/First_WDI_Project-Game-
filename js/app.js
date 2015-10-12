@@ -11,6 +11,7 @@ var pTwoMove = null;
 var p1chicken = null;
 var p1chicken = null;
 var compChicken = false;
+var compMove = null;
 
 fightComputerButton = document.getElementById("AI_initiate")
 fightComputerButton.addEventListener("click", getCompChicken)
@@ -43,17 +44,18 @@ function getCompChicken(){
 function getCompMove(){
   var randM = Math.random()
   if (randM < 0.25){
-    pTwoMove = "p2move1"
+    compMove = "p2move1"
   }
   else if (randM < 0.50){
-    pTwoMove = "p2move2"
+    compMove = "p2move2"
   }
   else if (randM < 0.75){
-    pTwoMove = "p2move3"
+    compMove = "p2move3"
   }
   else if (randM <= 1){
-    pTwoMove = "p2move4"
+    compMove = "p2move4"
   }
+  console.log(compMove)
 }
 
 playerOneButton = document.getElementById("playerOneButton")
@@ -202,33 +204,36 @@ function getPlayerOneMove(){
     moves1[i].addEventListener("click", executeOneMove)
 
   }
+
 }
 
 getPlayerOneMove()
+
 getPlayerTwoMove()
+
 function executeOneMove(){
   console.log("Choose a move")
   
   pOneMove = this.id
   console.log("pOneMove is " + pOneMove)
+  if(compChicken === true){
+    console.log("success")
+    getCompMove()
+    pTwoMove = compMove
+    bothMoves()
+  }
 
 }
 
 function getPlayerTwoMove(){
-  console.log(compChicken == true)
 
-  if(compChicken == true){
-    console.log("Comp is playing")
-    getCompMove()
-    console.log(pTwoMove)
-  }
-  else {
+  
   var moves2 = document.getElementsByClassName("p2moves");
   for (i = 0; i < moves2.length; i ++){
     moves2[i].addEventListener("click", executeTwoMove)
   }
 }
-}
+
 
 function executeTwoMove(){
   console.log("Choose a move")
@@ -259,6 +264,9 @@ function executeTwoMove(){
       }
     }
     function playerTwoHit(){
+      if(compChicken === true){
+        pTwoMove = compMove
+      }
       switch (pTwoMove){
         case "p2move1":
         p2chicken.move1(p1chicken)
