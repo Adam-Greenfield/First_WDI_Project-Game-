@@ -406,7 +406,14 @@ function changeButtons(){
   }
 }
 
-
+function displaydata(){
+  var playerOneHealth = document.getElementById("p1Health")
+  var playerOneSpeed = document.getElementById("p1Speed")
+  var playerOneArmour = document.getElementById("p1Armour")
+  var playerTwoHealth = document.getElementById("p2Health")
+  var playerTwoSpeed = document.getElementById("p2Speed")
+  var playerTwoArmour = document.getElementById("p2Armour")
+}
 
 
 // var chicken4 = Object.create(Chicken);
