@@ -36,7 +36,7 @@ function getCompChicken(){
     playerTwo = "Ash"
   }
   else if (randC <= 1){
-    playerTwo = "Steve"
+    playerTwo = "Bork-y"
   }
   console.log("player two is " + playerTwo)
 }
@@ -157,18 +157,31 @@ function fight(){
     p1chicken.move4 = Chicken.restore
     console.log("p1 chooses Ash!")
     break;
-    case "Steve":
+    case "Bork-y":
     p1chicken = Object.create(Chicken);
     p1chicken.health = 80,
     p1chicken.maxHealth = 80,
     p1chicken.speed = 10,
     p1chicken.armour = 3,
-    p1chicken.name = "Steve"
+    p1chicken.name = "Bork-y"
     p1chicken.move1 = Chicken.peck
     p1chicken.move2 = Chicken.trip
     p1chicken.move3 = Chicken.armourSwitch
     p1chicken.move4 = Chicken.restore
-    console.log("p1 chooses Steve!")
+    console.log("p1 chooses Bork-y!")
+    break;
+    case "Mark Cluckerburg":
+    p1chicken = Object.create(Chicken);
+    p1chicken.health = 80,
+    p1chicken.maxHealth = 80,
+    p1chicken.speed = 10,
+    p1chicken.armour = 3,
+    p1chicken.name = "Mark Cluckerburg"
+    p1chicken.move1 = Chicken.peck
+    p1chicken.move2 = Chicken.trip
+    p1chicken.move3 = Chicken.armourSwitch
+    p1chicken.move4 = Chicken.restore
+    console.log("p1 chooses Mark Cluckerburg!")
     break;
   }
   switch (playerTwo) {
@@ -198,18 +211,31 @@ function fight(){
     p2chicken.move4 = Chicken.restore
     console.log("p2 chooses Ash!")
     break;
-    case "Steve":
+    case "Bork-y":
     p2chicken = Object.create(Chicken);
     p2chicken.health = 80,
     p2chicken.maxHealth = 80,
     p2chicken.speed = 10,
     p2chicken.armour = 3,
-    p2chicken.name = "Steve"
+    p2chicken.name = "Bork-y"
     p2chicken.move1 = Chicken.peck
     p2chicken.move2 = Chicken.trip
     p2chicken.move3 = Chicken.armourSwitch
     p2chicken.move4 = Chicken.restore
-    console.log("p2 chooses Steve!")
+    console.log("p2 chooses Bork-y!")
+    break;
+    case "Mark Cluckerburg":
+    p2chicken = Object.create(Chicken);
+    p2chicken.health = 80,
+    p2chicken.maxHealth = 80,
+    p2chicken.speed = 10,
+    p2chicken.armour = 3,
+    p2chicken.name = "Mark Cluckerburg"
+    p2chicken.move1 = Chicken.peck
+    p2chicken.move2 = Chicken.trip
+    p2chicken.move3 = Chicken.armourSwitch
+    p2chicken.move4 = Chicken.restore
+    console.log("p2 chooses Mark Cluckerburg!")
     break;
   }
   changeButtons()
@@ -392,7 +418,7 @@ function changeButtons(){
       playerOneMoveTwo.innerHTML = "Topple";
       playerOneMoveThree.innerHTML = "Desperation";
       playerOneMoveFour.innerHTML = "Restore";
-    case "Steve":
+    case "Bork-y":
       playerOneMoveOne.innerHTML = "Peck";
       playerOneMoveTwo.innerHTML = "Trip";
       playerOneMoveThree.innerHTML = "Armour Switch";
@@ -411,7 +437,7 @@ function changeButtons(){
       playerTwoMoveTwo.innerHTML = "Topple";
       playerTwoMoveThree.innerHTML = "Desperation";
       playerTwoMoveFour.innerHTML = "Restore";
-    case "Steve":
+    case "Bork-y":
       playerTwoMoveOne.innerHTML = "Peck";
       playerTwoMoveTwo.innerHTML = "Trip";
       playerTwoMoveThree.innerHTML = "Armour Switch";
