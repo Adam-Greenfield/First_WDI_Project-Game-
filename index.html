@@ -11,9 +11,9 @@
 <img src="http://images.lingscars.com/images/header/webcams/chicken-ani.gif" alt="">
 <h2>SHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIT</h2>
   <div class="playerSelect">
-    <button id="playerOneButton" class="player">Player 1 Choose</button>
-    <button id="playerTwoButton" class="player">Player 2 Choose</button>
-    <button id="AI_initiate">Fight the computer!</button>
+    <button id="playerOneButton" class="player" title="Click to select a chicken for Player One">Player 1 Choose</button>
+    <button id="playerTwoButton" class="player" title="Click to select a chicken for Player Two">Player 2 Choose</button>
+    <button id="AI_initiate" title="Choose Player One then hit this to initialise an AI opponent!">Fight the computer!</button>
   </div>
 
   <button id="Gary" class="test"><a>Gary</a></button>
@@ -21,21 +21,29 @@
   <button id="Bork-y" class="test"><a>Bork-y</a></button>
   <button id="Mark Cluckerburg" class="test"><a>Mark Cluckerburg</a></button>
   <div>
-    <button id="startFight">Fight!</button>
+    <button id="startFight" title="start the fight">Fight!</button>
   </div>
   <div class="moves">
   <div class="PlayerOneMoves">
+  <div>
     <button class="p1moves"id="p1move1">move 1</button>
     <button class="p1moves"id="p1move2">move 2</button>
+    </div>
+    <div>
     <button class="p1moves"id="p1move3">move 3</button>
     <button class="p1moves"id="p1move4">move 4</button>
+    </div>
   </div>
 
   <div class="PlayerTwoMoves">
+  <div>
     <button class="p2moves"id="p2move1">move 1</button>
     <button class="p2moves"id="p2move2">move 2</button>
+    </div>
+    <div>
     <button class="p2moves"id="p2move3">move 3</button>
     <button class="p2moves"id="p2move4">move 4</button>
+    </div>
   </div>
   </div>
 
@@ -62,9 +70,7 @@
       <p id="p2Armour">Armour: </p>
   </div>
 </article>
-<br />
-<br />
-<br />
+
 </body>
 <script type="text/javascript" src="./js/app.js"></script>
 </body>

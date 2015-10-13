@@ -20,6 +20,7 @@ button {
   font-family: 'pokemon_gbregular';
   padding: 5px;
   background-color: #D8D8DF;
+  margin: 10px;
 
 }
 .playerSelect {

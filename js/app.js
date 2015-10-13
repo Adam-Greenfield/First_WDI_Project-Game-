@@ -18,11 +18,27 @@ var textBox2 = document.getElementById("info2")
 fightComputerButton = document.getElementById("AI_initiate")
 fightComputerButton.addEventListener("click", getCompChicken)
 
+
+
 var showText = function (target, message, index, interval) {   
   if (index < message.length) {
     $(target).append(message[index++]);
     setTimeout(function () { showText(target, message, index, interval); }, interval);
   }
+}
+
+function startGame(){
+  var p1chicken = null;
+  var p2chicken = null;
+  var playerOne = null;
+  var playerTwo = null;
+  var playerOneMove = null;
+  var playerTwoMove = null;
+  var pOneMove = null;
+  var pTwoMove = null;
+  textBox1.innerHTML = ""
+  textBox2.innerHTML = ""
+  showText("#info1", "Player One choose a chicken!", 0, 50);  
 }
 
 function isCompTrue(){
@@ -119,7 +135,28 @@ function playerTwoSelect(){
 }
 
 
-
+function checkForKo(){
+  if (p1chicken.heath <= 0){
+    // textBox1.innerHTML = "p2 has won!"
+    textBox1.innerHTML = ""
+    showText("#info1", "Player Two has won!", 0, 50); 
+    textBox2.innerHTML = ""
+    setTimeout(startGame(), 4000)
+  }
+  else if (p2chicken.health <= 0){
+    // textBox1.innerHTML = "p1 has won!"
+    textBox1.innerHTML = ""
+    showText("#info1", "Player One has won!", 0, 50); 
+    textBox2.innerHTML = ""
+    setTimeout(startGame(), 4000)
+  }
+  else if ((p1chicken.health <= 0) && (p2chicken.health <=0)){
+    textBox1.innerHTML = ""
+    showText("#info1", "Double K.O!", 0, 50); 
+    textBox2.innerHTML = ""
+    setTimeout(startGame(), 4000)
+  }
+}
 
 function getPlayerOne(){
   if (playerOne == null){
@@ -327,6 +364,7 @@ function executeTwoMove(){
   // else 
 
   function bothMoves(){
+    // checkForKo()
     // textBox1.innerHTML = ""
     // showText("#info1", "Fight!", 0, 50); 
     // // textBox1.innerHTML = "fight!"
@@ -346,6 +384,7 @@ function executeTwoMove(){
         p1chicken.move4(p2chicken, p1chicken)
         break;
       }
+      setTimeout(checkForKo(), 9000)
       displaydata()
     }
     function playerTwoHit(){
@@ -366,7 +405,7 @@ function executeTwoMove(){
         p2chicken.move4(p1chicken, p2chicken)
         break;
       }
-      checkForKo()
+      
       displaydata()
     }
     if (p1chicken.speed > p2chicken.speed){
@@ -376,6 +415,7 @@ function executeTwoMove(){
       textBox2.innerHTML = ""
       setTimeout(playerOneHit, 3000)
       setTimeout(playerTwoHit, 9500)
+      // setTimeout(checkForKo, 15000)
 
     }
     else if (p2chicken.speed > p1chicken.speed){
@@ -385,6 +425,7 @@ function executeTwoMove(){
       textBox2.innerHTML = ""
       setTimeout(playerTwoHit, 3000)
       setTimeout(playerOneHit, 9500)
+      // setTimeout(checkForKo, 15000)
     }
     else {
       var rand = Math.random()
@@ -395,6 +436,7 @@ function executeTwoMove(){
         textBox2.innerHTML = ""
         setTimeout(playerTwoHit, 3000)
         setTimeout(playerOneHit, 9500)
+        // setTimeout(checkForKo, 15000)
       }
       else {
         // textBox1.innerHTML = "Player One strikes first!"
@@ -403,23 +445,11 @@ function executeTwoMove(){
         textBox2.innerHTML = ""
         setTimeout(playerOneHit, 3000)
         setTimeout(playerTwoHit, 9500)
+        // setTimeout(checkForKo, 15000)
       }
     }
-    function checkForKo(){
-      if (p1chicken.heath <= 0){
-        // textBox1.innerHTML = "p2 has won!"
-        textBox1.innerHTML = ""
-        showText("#info1", "Player Two has won!", 0, 50); 
-        textBox2.innerHTML = ""
-      }
-      else if (p2chicken.health <= 0){
-        // textBox1.innerHTML = "p1 has won!"
-        textBox1.innerHTML = ""
-        showText("#info1", "Player One has won!", 0, 50); 
-        textBox2.innerHTML = ""
-      }
-    }
-    checkForKo()
+
+    
     displaydata()
   }
 // else 
@@ -432,7 +462,7 @@ var Chicken = {
   speed: 0,
   armour: 0,
   slash:function(target, self){
-    var damage = Math.ceil((15 - target.armour) + Math.ceil((Math.random() * 5)))
+    var damage = Math.ceil((15 - target.armour) + Math.ceil((Math.random() * 100)))
     target.health = target.health - damage
     // textBox1.innerHTML = self.name + " used Slash! Nasty!"
     textBox1.innerHTML = ""
@@ -443,6 +473,7 @@ var Chicken = {
      textBox1.innerHTML = ""
      showText("#info1", self.name + " dealt " + damage + " damage to " + target.name, 0, 50);
    }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   topple:function(target, self){
     var damage = Math.ceil(target.health / 4)
@@ -581,7 +612,7 @@ function changeButtons(){
     case "Gary":
     playerOneMoveOne.innerHTML = "Slash";
     playerOneMoveTwo.innerHTML = "Topple";
-    playerOneMoveThree.innerHTML = "Vampire Strike";
+    playerOneMoveThree.innerHTML = "Vamp Strike";
     playerOneMoveFour.innerHTML = "Restore";
     break;
     case "Ash":
@@ -599,7 +630,7 @@ function changeButtons(){
     case "Mark Cluckerburg":
     playerOneMoveOne.innerHTML = "Slash";
     playerOneMoveTwo.innerHTML = "Topple";
-    playerOneMoveThree.innerHTML = "Vampire Strike";
+    playerOneMoveThree.innerHTML = "Vamp Strike";
     playerOneMoveFour.innerHTML = "Sacrifice";
     break;
   }
@@ -608,7 +639,7 @@ function changeButtons(){
     case "Gary":
     playerTwoMoveOne.innerHTML = "Slash";
     playerTwoMoveTwo.innerHTML = "Topple";
-    playerTwoMoveThree.innerHTML = "Vampire Strike";
+    playerTwoMoveThree.innerHTML = "Vamp Strike";
     playerTwoMoveFour.innerHTML = "Restore";
     break;
     case "Ash":
@@ -626,7 +657,7 @@ function changeButtons(){
     case "Mark Cluckerburg":
     playerTwoMoveOne.innerHTML = "Slash";
     playerTwoMoveTwo.innerHTML = "Topple";
-    playerTwoMoveThree.innerHTML = "Vampire Strike";
+    playerTwoMoveThree.innerHTML = "Vamp Strike";
     playerTwoMoveFour.innerHTML = "Sacrifice";
     break;
   }
