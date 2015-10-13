@@ -137,26 +137,33 @@ function playerTwoSelect(){
 
 
 function checkForKo(){
-  if (p1chicken.heath <= 0){
+  
+  if (p1chicken.health <= 0){
+   
     // textBox1.innerHTML = "p2 has won!"
     textBox1.innerHTML = ""
     showText("#info1", "Player Two has won!", 0, 50); 
     textBox2.innerHTML = ""
-    setTimeout(startGame(), 4000)
+    setTimeout(startGame, 4000)
+    document.getElementById("mp31").pause();
+    document.getElementById("mp32").play();
   }
   else if (p2chicken.health <= 0){
     // textBox1.innerHTML = "p1 has won!"
     textBox1.innerHTML = ""
     showText("#info1", "Player One has won!", 0, 50); 
     textBox2.innerHTML = ""
-    setTimeout(startGame(), 4000)
+    setTimeout(startGame, 4000)
+    document.getElementById("mp31").pause();
+    document.getElementById("mp32").play();
   }
-  else if ((p1chicken.health <= 0) && (p2chicken.health <=0)){
-    textBox1.innerHTML = ""
-    showText("#info1", "Double K.O!", 0, 50); 
-    textBox2.innerHTML = ""
-    setTimeout(startGame(), 4000)
-  }
+  // else if ((p1chicken.health <= 0) && (p2chicken.health <=0)){
+  //   textBox1.innerHTML = ""
+  //   showText("#info1", "Double K.O!", 0, 50); 
+  //   textBox2.innerHTML = ""
+  //   setTimeout(startGame, 4000)
+  //   document.getElementById("mp31").play();
+  // }
 }
 
 function getPlayerOne(){
@@ -189,9 +196,15 @@ function getPlayerTwo(){
 }
 
 function fight(){
+  document.getElementById("mp31").play();
+
 
   switch (playerOne) {
     case "Gary":
+    // {
+    //   health: 100,
+    //   maxHealth: 100
+    // }
     p1chicken = Object.create(Chicken);
     p1chicken.health = 100,
     p1chicken.maxHealth = 100,
@@ -204,6 +217,7 @@ function fight(){
     p1chicken.move4 = Chicken.restore
     // textBox1.innerHTML = "Player One chooses Gary!"
     textBox1.innerHTML = ""
+    //p1chicken = window.gary
     showText("#info1", "Player One chooses Gary!", 0, 50);   
     break;
     case "Ash":
@@ -463,7 +477,7 @@ var Chicken = {
   speed: 0,
   armour: 0,
   slash:function(target, self){
-    var damage = Math.ceil((15 - target.armour) + Math.ceil((Math.random() * 100)))
+    var damage = Math.ceil((15 - target.armour) + Math.ceil((Math.random() * 7)))
     target.health = target.health - damage
     // textBox1.innerHTML = self.name + " used Slash! Nasty!"
     textBox1.innerHTML = ""
@@ -488,6 +502,7 @@ var Chicken = {
       textBox1.innerHTML = ""
       showText("#info1", self.name + " dealt " + damage + " damage to " + target.name, 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   trip:function(target, self){
     var damage = Math.ceil(10 - target.armour)
@@ -505,6 +520,7 @@ var Chicken = {
       textBox2.innerHTML = ""
       showText("#info2", target.name + "'s Speed was lowered!", 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   peck:function(target, self){
     var damage = Math.ceil(target.maxHealth / (5 - (target.armour / 2)))
@@ -518,7 +534,7 @@ var Chicken = {
       textBox1.innerHTML = ""
       showText("#info1", self.name + " dealt " + damage + " damage to " + target.name, 0, 50);
     }, 3500)
-
+    setTimeout(checkForKo, 8000)
   },
   vampireStrike:function(target, self){
     var damage = Math.ceil((Math.random() * 15) + (10 / target.armour))
@@ -537,10 +553,11 @@ var Chicken = {
       textBox2.innerHTML = ""
       showText("#info2", self.name + " stole " + heal + " life!", 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   armourSwitch:function(target, self){
-    target.armor = 1
-    self.armor = self.armor + 5
+    target.armour = 1
+    self.armour = self.armour + 5
     // textBox1.innerHTML = self.name + " used Armour Switch! Dang!"
     textBox1.innerHTML = ""
     showText("#info1", self.name + " used Armour Switch! Dang!", 0, 50);
@@ -550,6 +567,7 @@ var Chicken = {
       textBox1.innerHTML = ""
       showText("#info1", self.name + " buffed the flip up and " + target.name + " is pants now", 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
 
   restore:function(target, self){
@@ -564,6 +582,7 @@ var Chicken = {
       textBox1.innerHTML = ""
       showText("#info1", self.name + " healed for a bunch! " + heal + " in fact!", 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   desperation:function(target, self){
     var damage = Math.ceil((self.maxHealth - self.health) / 1.5)
@@ -577,6 +596,7 @@ var Chicken = {
       textBox1.innerHTML = ""
       showText("#info1", self.name + " dealt " + damage + " damage to " + target.name, 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   },
   sacrifice:function(target, self){
     var damage = Math.ceil((Math.random() * 20) + (25 - (target.armour * 3)))
@@ -596,6 +616,7 @@ var Chicken = {
       textBox2.innerHTML = ""
       showText("#info2", self.name + " takes " + selfDamage + " damage and gains Armour!", 0, 50);
     }, 3500)
+    setTimeout(checkForKo, 8000)
   }
 }
 
