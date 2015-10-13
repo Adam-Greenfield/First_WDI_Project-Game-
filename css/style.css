@@ -1,6 +1,23 @@
+@font-face {
+    font-family: 'pokemon_gbregular';
+    src: url('./fonts/pokemon_gb-webfont.eot');
+    src: url('./fonts/pokemon_gb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/pokemon_gb-webfont.woff2') format('woff2'),
+         url('./fonts/pokemon_gb-webfont.woff') format('woff'),
+         url('./fonts/pokemon_gb-webfont.ttf') format('truetype'),
+         url('./fonts/pokemon_gb-webfont.svg#pokemon_gbregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
   text-align: center;
-
+  font-family: 'pokemon_gbregular';
+  font-size: 15px;
+}
+button {
+  font-family: 'pokemon_gbregular';
 }
 .playerSelect {
   margin: 20px auto;
@@ -19,14 +36,16 @@ body {
 
 #playerOneStats{
   top: 50px;
-  margin: 50px 100px;
+  margin-top: 50px;
+  margin-right: 300px;
   position: relative;
   display: inline-block;
 }
 
 #playerTwoStats{
   top: 50px;
-  margin: 50px 100px;
+  margin-top: 50px;
+  margin-left: 300px;
   position: relative;
   display: inline-block;
 }
@@ -34,23 +53,26 @@ body {
 .infoBox {
   width: 300px;
   height: 150px;
-  position: relative;
+  position: absolute;
+  top: 450px;
   margin: 20px auto;
   border: 10px solid black;
   display: inline-block;
+  left: 480px;
 }
 
 #info1{
   position: relative;
   text-align: left;
   /*margin: 10px;*/
-  font-size: 20px;
+  font-size: 15px;
+
 } 
 #info2{
   position: relative;
   text-align: left;
   /*margin: 10px;*/
-  font-size: 20px;
+  font-size: 15px;
 } 
 
 .moves{
@@ -60,12 +82,14 @@ body {
 
 .PlayerOneMoves {
   /*float: left;*/
+  top: 80px;
   position: relative;
   display: inline-block;
-  margin-right: 340px;
+  margin-right: 380px;
 }
 
 .PlayerTwoMoves {
+  top: 80px;
   position: relative;
   display: inline-block;
 }

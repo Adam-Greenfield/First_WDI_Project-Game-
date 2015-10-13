@@ -376,6 +376,7 @@ function executeTwoMove(){
       textBox2.innerHTML = ""
       setTimeout(playerOneHit, 3000)
       setTimeout(playerTwoHit, 9500)
+
     }
     else if (p2chicken.speed > p1chicken.speed){
       // textBox1.innerHTML = "Player Two strikes first!"
