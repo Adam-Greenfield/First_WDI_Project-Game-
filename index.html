@@ -7,18 +7,21 @@
 
 </head>
 <body>
-  <div>
-    <button id="startFight">Fight!</button>
-  </div>
+
   <div class="playerSelect">
     <button id="playerOneButton" class="player">Player 1 Choose</button>
     <button id="playerTwoButton" class="player">Player 2 Choose</button>
+    <button id="AI_initiate">Fight the computer!</button>
   </div>
+
   <button id="Gary" class="test"><a>Gary</a></button>
   <button id="Ash" class="test"><a>Ash</a></button>
   <button id="Bork-y" class="test"><a>Bork-y</a></button>
   <button id="Mark Cluckerburg" class="test"><a>Mark Cluckerburg</a></button>
-
+  <div>
+    <button id="startFight">Fight!</button>
+  </div>
+  <div class="moves">
   <div class="PlayerOneMoves">
     <button class="p1moves"id="p1move1">move 1</button>
     <button class="p1moves"id="p1move2">move 2</button>
@@ -32,26 +35,31 @@
     <button class="p2moves"id="p2move3">move 3</button>
     <button class="p2moves"id="p2move4">move 4</button>
   </div>
-  <div>
-    <button id="AI_initiate">Fight the computer!</button>
   </div>
-<div class="infoBox">
-  <p id="info1">...</p>
-  <p id="info2"></p>
-</div>
+
+
+<article class="battlefield">
+
 
   <div class="stats"
-  <div id="playerOneStats">
-    <p id="p1Health">Health: </p>
-    <p id="p1Speed">Speed: </p>
-    <p id="p1Armour">Armour: </p>
-  </div>
+    <div id="playerOneStats">
+      <p id="p1Health">Health: </p>
+      <p id="p1Speed">Speed: </p>
+      <p id="p1Armour">Armour: </p>
+    </div>
 
-  <div id="playerTwoStats">
-    <p id="p2Health">Health: </p>
-    <p id="p2Speed">Speed: </p>
-    <p id="p2Armour">Armour: </p>
+    <div class="infoBox">
+      <p id="info1">...</p>
+      <p id="info2">...</p>
+    </div>
+  
+    <div id="playerTwoStats">
+      <p id="p2Health">Health: </p>
+      <p id="p2Speed">Speed: </p>
+      <p id="p2Armour">Armour: </p>
   </div>
+</article>
+
 </body>
 <script type="text/javascript" src="./js/app.js"></script>
 </body>

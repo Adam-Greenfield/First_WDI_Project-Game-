@@ -9,7 +9,7 @@ var playerTwoMove = null;
 var pOneMove = null;
 var pTwoMove = null;
 var p1chicken = null;
-var p1chicken = null;
+var p2chicken = null;
 var compChicken = false;
 var compMove = null;
 var textBox1 = document.getElementById("info1")
@@ -40,7 +40,7 @@ function getCompChicken(){
   else if (randC <= 1){
     playerTwo = "Bork-y"
   }
-  textBox2.innerHTML ="player two is " + playerTwo
+  textBox2.innerHTML ="Player Two is " + playerTwo
 }
 
 function getCompMove(){
@@ -142,7 +142,7 @@ function fight(){
     p1chicken.move2 = Chicken.topple
     p1chicken.move3 = Chicken.vampireStrike
     p1chicken.move4 = Chicken.restore
-    textBox1.innerHTML = "p1 chooses Gary!"
+    textBox1.innerHTML = "Player One chooses Gary!"
     break;
     case "Ash":
     p1chicken = Object.create(Chicken);
@@ -155,7 +155,7 @@ function fight(){
     p1chicken.move2 = Chicken.topple
     p1chicken.move3 = Chicken.desperation
     p1chicken.move4 = Chicken.restore
-    textBox1.innerHTML = "p1 chooses Ash!"
+    textBox1.innerHTML = "Player One chooses Ash!"
     break;
     case "Bork-y":
     p1chicken = Object.create(Chicken);
@@ -168,7 +168,7 @@ function fight(){
     p1chicken.move2 = Chicken.trip
     p1chicken.move3 = Chicken.armourSwitch
     p1chicken.move4 = Chicken.restore
-    textBox1.innerHTML = "p1 chooses Bork-y!"
+    textBox1.innerHTML = "player One chooses Bork-y!"
     break;
     case "Mark Cluckerburg":
     p1chicken = Object.create(Chicken);
@@ -177,11 +177,11 @@ function fight(){
     p1chicken.speed = 10,
     p1chicken.armour = 3,
     p1chicken.name = "Mark Cluckerburg"
-    p1chicken.move1 = Chicken.peck
+    p1chicken.move1 = Chicken.slash
     p1chicken.move2 = Chicken.trip
-    p1chicken.move3 = Chicken.armourSwitch
-    p1chicken.move4 = Chicken.restore
-    textBox1.innerHTML = "p1 chooses Mark Cluckerburg!"
+    p1chicken.move3 = Chicken.vampireStrike
+    p1chicken.move4 = Chicken.sacrifice
+    textBox1.innerHTML = "Player One chooses Mark Cluckerburg!"
     break;
   }
   switch (playerTwo) {
@@ -196,7 +196,7 @@ function fight(){
     p2chicken.move2 = Chicken.topple
     p2chicken.move3 = Chicken.vampireStrike
     p2chicken.move4 = Chicken.restore
-    textBox2.innerHTML = "p2 chooses Gary!"
+    textBox2.innerHTML = "Player Two chooses Gary!"
     break;
     case "Ash":
     p2chicken = Object.create(Chicken);
@@ -209,7 +209,7 @@ function fight(){
     p2chicken.move2 = Chicken.topple
     p2chicken.move3 = Chicken.desperation
     p2chicken.move4 = Chicken.restore
-    textBox2.innerHTML = "p2 chooses Ash!"
+    textBox2.innerHTML = "Player Two chooses Ash!"
     break;
     case "Bork-y":
     p2chicken = Object.create(Chicken);
@@ -222,7 +222,7 @@ function fight(){
     p2chicken.move2 = Chicken.trip
     p2chicken.move3 = Chicken.armourSwitch
     p2chicken.move4 = Chicken.restore
-    textBox2.innerHTML = "p2 chooses Bork-y!"
+    textBox2.innerHTML = "Player Two chooses Bork-y!"
     break;
     case "Mark Cluckerburg":
     p2chicken = Object.create(Chicken);
@@ -231,11 +231,11 @@ function fight(){
     p2chicken.speed = 10,
     p2chicken.armour = 3,
     p2chicken.name = "Mark Cluckerburg"
-    p2chicken.move1 = Chicken.peck
+    p2chicken.move1 = Chicken.slash
     p2chicken.move2 = Chicken.trip
-    p2chicken.move3 = Chicken.armourSwitch
-    p2chicken.move4 = Chicken.restore
-    textBox1.innerHTML = "p2 chooses Mark Cluckerburg!"
+    p2chicken.move3 = Chicken.vampireStrike
+    p2chicken.move4 = Chicken.sacrifice
+    textBox1.innerHTML = "Player Two chooses Mark Cluckerburg!"
     break;
   }
   changeButtons()
@@ -294,16 +294,16 @@ function executeTwoMove(){
     function playerOneHit(){
       switch (pOneMove){
         case "p1move1":
-        p1chicken.move1(p2chicken)
+        p1chicken.move1(p2chicken, p1chicken)
         break;
         case "p1move2":
-        p1chicken.move2(p2chicken)
+        p1chicken.move2(p2chicken, p1chicken)
         break;
         case "p1move3":
         p1chicken.move3(p2chicken, p1chicken)
         break;
         case "p1move4":
-        p1chicken.move4(p1chicken)
+        p1chicken.move4(p2chicken, p1chicken)
         break;
       }
       displaydata()
@@ -314,45 +314,45 @@ function executeTwoMove(){
       }
       switch (pTwoMove){
         case "p2move1":
-        p2chicken.move1(p1chicken)
+        p2chicken.move1(p1chicken, p2chicken)
         break;
         case "p2move2":
-        p2chicken.move2(p1chicken)
+        p2chicken.move2(p1chicken, p2chicken)
         break;
         case "p2move3":
         p2chicken.move3(p1chicken, p2chicken)
         break;
         case "p2move4":
-        p2chicken.move4(p2chicken)
+        p2chicken.move4(p1chicken, p2chicken)
         break;
       }
       displaydata()
     }
     if (p1chicken.speed > p2chicken.speed){
-      textBox1.innerHTML = "p1 strikes first!"
+      textBox1.innerHTML = "Player One strikes first!"
       textBox2.innerHTML = ""
       setTimeout(playerOneHit, 1000)
-      setTimeout(playerTwoHit, 3200)
+      setTimeout(playerTwoHit, 4500)
     }
     else if (p2chicken.speed > p1chicken.speed){
-      textBox1.innerHTML = "p2 strikes first!"
+      textBox1.innerHTML = "Player Two strikes first!"
       textBox2.innerHTML = ""
       setTimeout(playerTwoHit, 1000)
-      setTimeout(playerOneHit, 3200)
+      setTimeout(playerOneHit, 4500)
     }
     else {
       var rand = Math.random()
       if (rand < 0.50){
-        textBox1.innerHTML = "p2 strikes first!"
+        textBox1.innerHTML = "Player Two strikes first!"
         textBox2.innerHTML = ""
         setTimeout(playerTwoHit, 1000)
-        setTimeout(playerOneHit, 3200)
+        setTimeout(playerOneHit, 4500)
       }
       else {
-        textBox1.innerHTML = "p1 strikes first!"
+        textBox1.innerHTML = "Player One strikes first!"
         textBox2.innerHTML = ""
         setTimeout(playerOneHit, 1000)
-        setTimeout(playerTwoHit, 3200)
+        setTimeout(playerTwoHit, 4500)
       }
     }
     function checkForKo(){
@@ -377,34 +377,98 @@ var Chicken = {
   health: 0,
   speed: 0,
   armour: 0,
-  slash:function(target){
-    target.health = target.health - ((15 - target.armour) + Math.ceil((Math.random() * 5)))
+  slash:function(target, self){
+    var damage = Math.ceil((15 - target.armour) + Math.ceil((Math.random() * 5)))
+    target.health = target.health - damage
+    textBox1.innerHTML = self.name + " used Slash!"
+    textBox2.innerHTML = ""
+    setTimeout(function(){
+     textBox1.innerHTML = self.name + " dealt " + damage + " damage to " + target.name
+   }, 2000)
   },
-  topple:function(target){
-    target.health = target.health - (target.health / 4)
+  topple:function(target, self){
+    var damage = Math.ceil(target.health / 4)
+    target.health = target.health - damage
+    textBox1.innerHTML = self.name + " used Topple!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " dealt " + damage + " damage to " + target.name
+    }, 2000)
   },
-  trip:function(target){
+  trip:function(target, self){
+    var damage = Math.ceil(10 - target.armour)
     target.speed = target.speed - 2.5
-    target.health = target.health - (10 - target.armour)
+    target.health = target.health - damage
+    textBox1.innerHTML = self.name + " used Trip!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " dealt " + damage + " damage to " + target.name
+      textBox2.innerHTML = target.name + "'s Speed was lowered!"
+    }, 2000)
   },
-  peck:function(target){
-    target.health = target.health - (target.maxHealth / 5)
+  peck:function(target, self){
+    var damage = Math.ceil(target.maxHealth / (5 - (target.armour / 2)))
+    target.health = target.health - damage
+    textBox1.innerHTML = self.name + " used Peck!"
+    textBox2.innerHTML = "" 
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " dealt " + damage + " damage to " + target.name
+    }, 2000)
 
   },
   vampireStrike:function(target, self){
-    target.health = (target.health - (Math.ceil(Math.random() * 15) + 10))
-    self.health = (self.health + Math.ceil(Math.random() * 7) + 7)
+    var damage = Math.ceil((Math.random() * 15) + (10 / target.armour))
+    target.health = target.health - damage
+    var heal = Math.ceil((Math.random() * 7) + 7)
+    self.health = self.health + heal
+    textBox1.innerHTML = self.name + " used Vampire Strike!"
+    textBox2.innerHTML = "" 
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " dealt " + damage + " damage to " + target.name
+      textBox2.innerHTML = self.name + " stole " + heal + " life!"
+    }, 2000)
   },
   armourSwitch:function(target, self){
     target.armor = 1
-    self.armor = self.armor + 5 
+    self.armor = self.armor + 5
+    textBox1.innerHTML = self.name + " used Armour Switch!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " buffed the flip up and " + target.name + " is pants now"
+    }, 2000)
   },
-  restore:function(target){
-    target.health = target.health + (target.maxHealth / 15)
+
+  restore:function(target, self){
+    var heal = Math.ceil(self.maxHealth / 15)
+    self.health = self.health + heal
+    textBox1.innerHTML = self.name + " used Restore!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " healed for a bunch! " + heal + " in fact!"
+    }, 2000)
   },
   desperation:function(target, self){
-    target.health = target.health - (self.maxHealth - self.health) / 1.5
+    var damage = Math.ceil((self.maxHealth - self.health) / 1.5)
+    target.health = target.health - damage
+    textBox1.innerHTML = self.name + " lashed out in desperation!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = self.name + " dealt " + damage + " to " + target.name
+    }, 2000)
   },
+  sacrifice:function(target, self){
+    var damage = Math.ceil((Math.random() * 20) + (25 - (target.armour * 3)))
+    var selfDamage = Math.ceil(((Math.random() * 20)) + 10)
+    target.health = target.health - damage
+    self.health = self.health - damage
+    self.armour = self.armour + 3
+    textBox1.innerHTML = self.name + " used Sacrifice! Shit!"
+    textBox2.innerHTML = ""
+     setTimeout(function(){
+      textBox1.innerHTML = target.name + " takes " + damage + " damage!" 
+      textBox2.innerHTML = self.name + " takes " + selfDamage + " damage and gains Armour!"
+    }, 2000)
+  }
 }
 
 function changeButtons(){
@@ -429,11 +493,19 @@ function changeButtons(){
       playerOneMoveTwo.innerHTML = "Topple";
       playerOneMoveThree.innerHTML = "Desperation";
       playerOneMoveFour.innerHTML = "Restore";
+      break;
     case "Bork-y":
       playerOneMoveOne.innerHTML = "Peck";
       playerOneMoveTwo.innerHTML = "Trip";
       playerOneMoveThree.innerHTML = "Armour Switch";
       playerOneMoveFour.innerHTML = "Restore";
+      break;
+    case "Mark Cluckerburg":
+      playerOneMoveOne.innerHTML = "Slash";
+      playerOneMoveTwo.innerHTML = "Topple";
+      playerOneMoveThree.innerHTML = "Vampire Strike";
+      playerOneMoveFour.innerHTML = "Sacrifice";
+      break;
   }
 
   switch (p2chicken.name){
@@ -448,11 +520,19 @@ function changeButtons(){
       playerTwoMoveTwo.innerHTML = "Topple";
       playerTwoMoveThree.innerHTML = "Desperation";
       playerTwoMoveFour.innerHTML = "Restore";
+      break;
     case "Bork-y":
       playerTwoMoveOne.innerHTML = "Peck";
       playerTwoMoveTwo.innerHTML = "Trip";
       playerTwoMoveThree.innerHTML = "Armour Switch";
       playerTwoMoveFour.innerHTML = "Restore";
+      break;
+    case "Mark Cluckerburg":
+      playerTwoMoveOne.innerHTML = "Slash";
+      playerTwoMoveTwo.innerHTML = "Topple";
+      playerTwoMoveThree.innerHTML = "Vampire Strike";
+      playerTwoMoveFour.innerHTML = "Sacrifice";
+      break;
   }
 }
 
