@@ -38,7 +38,8 @@ function startGame(){
   var pTwoMove = null;
   textBox1.innerHTML = ""
   textBox2.innerHTML = ""
-  showText("#info1", "Player One choose a chicken!", 0, 50);  
+  setTimeout((showText("#info1", "Player One choose a chicken!", 0, 50)), 10000)
+
 }
 
 function isCompTrue(){
@@ -384,7 +385,7 @@ function executeTwoMove(){
         p1chicken.move4(p2chicken, p1chicken)
         break;
       }
-      setTimeout(checkForKo(), 9000)
+      // setTimeout(checkForKo(), 9000)
       displaydata()
     }
     function playerTwoHit(){
@@ -554,9 +555,9 @@ var Chicken = {
   restore:function(target, self){
     var heal = Math.ceil(self.maxHealth / 15)
     self.health = self.health + heal
-    // textBox1.innerHTML = self.name + " used Restore! What a p***y!"
+    // textBox1.innerHTML = self.name + " used Restore! What a wuss!"
     textBox1.innerHTML = ""
-    showText("#info1", self.name + " used Restore! What a p***y!", 0, 50);
+    showText("#info1", self.name + " used Restore! What a wuss!", 0, 50);
     textBox2.innerHTML = ""
     setTimeout(function(){
       // textBox1.innerHTML = self.name + " healed for a bunch! " + heal + " in fact!"
