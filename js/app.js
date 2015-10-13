@@ -12,6 +12,8 @@ var p1chicken = null;
 var p1chicken = null;
 var compChicken = false;
 var compMove = null;
+var textBox1 = document.getElementById("info1")
+var textBox2 = document.getElementById("info2")
 
 fightComputerButton = document.getElementById("AI_initiate")
 fightComputerButton.addEventListener("click", getCompChicken)
@@ -38,7 +40,7 @@ function getCompChicken(){
   else if (randC <= 1){
     playerTwo = "Bork-y"
   }
-  console.log("player two is " + playerTwo)
+  textBox2.innerHTML ="player two is " + playerTwo
 }
 
 function getCompMove(){
@@ -112,7 +114,7 @@ function getPlayerOne(){
     playerOne = this.id;
   }
   else {console.log("One already set")}
-    console.log("Player One is " + playerOne)
+    textBox1.innerHTML = "Player One is " + playerOne
 }
 
 function getPlayerTwo(){
@@ -121,7 +123,7 @@ function getPlayerTwo(){
     playerTwo = this.id;
   }
   else {console.log("Two already set")}
-    console.log("Player Two is " + playerTwo)
+    textBox2.innerHTML = "Player Two is " + playerTwo
   
 
 }
@@ -140,9 +142,7 @@ function fight(){
     p1chicken.move2 = Chicken.topple
     p1chicken.move3 = Chicken.vampireStrike
     p1chicken.move4 = Chicken.restore
-
-
-    console.log("p1 chooses Gary!")
+    textBox1.innerHTML = "p1 chooses Gary!"
     break;
     case "Ash":
     p1chicken = Object.create(Chicken);
@@ -155,7 +155,7 @@ function fight(){
     p1chicken.move2 = Chicken.topple
     p1chicken.move3 = Chicken.desperation
     p1chicken.move4 = Chicken.restore
-    console.log("p1 chooses Ash!")
+    textBox1.innerHTML = "p1 chooses Ash!"
     break;
     case "Bork-y":
     p1chicken = Object.create(Chicken);
@@ -168,7 +168,7 @@ function fight(){
     p1chicken.move2 = Chicken.trip
     p1chicken.move3 = Chicken.armourSwitch
     p1chicken.move4 = Chicken.restore
-    console.log("p1 chooses Bork-y!")
+    textBox1.innerHTML = "p1 chooses Bork-y!"
     break;
     case "Mark Cluckerburg":
     p1chicken = Object.create(Chicken);
@@ -181,7 +181,7 @@ function fight(){
     p1chicken.move2 = Chicken.trip
     p1chicken.move3 = Chicken.armourSwitch
     p1chicken.move4 = Chicken.restore
-    console.log("p1 chooses Mark Cluckerburg!")
+    textBox1.innerHTML = "p1 chooses Mark Cluckerburg!"
     break;
   }
   switch (playerTwo) {
@@ -196,7 +196,7 @@ function fight(){
     p2chicken.move2 = Chicken.topple
     p2chicken.move3 = Chicken.vampireStrike
     p2chicken.move4 = Chicken.restore
-    console.log("p2 chooses Gary!")
+    textBox2.innerHTML = "p2 chooses Gary!"
     break;
     case "Ash":
     p2chicken = Object.create(Chicken);
@@ -209,7 +209,7 @@ function fight(){
     p2chicken.move2 = Chicken.topple
     p2chicken.move3 = Chicken.desperation
     p2chicken.move4 = Chicken.restore
-    console.log("p2 chooses Ash!")
+    textBox2.innerHTML = "p2 chooses Ash!"
     break;
     case "Bork-y":
     p2chicken = Object.create(Chicken);
@@ -222,7 +222,7 @@ function fight(){
     p2chicken.move2 = Chicken.trip
     p2chicken.move3 = Chicken.armourSwitch
     p2chicken.move4 = Chicken.restore
-    console.log("p2 chooses Bork-y!")
+    textBox2.innerHTML = "p2 chooses Bork-y!"
     break;
     case "Mark Cluckerburg":
     p2chicken = Object.create(Chicken);
@@ -235,7 +235,7 @@ function fight(){
     p2chicken.move2 = Chicken.trip
     p2chicken.move3 = Chicken.armourSwitch
     p2chicken.move4 = Chicken.restore
-    console.log("p2 chooses Mark Cluckerburg!")
+    textBox1.innerHTML = "p2 chooses Mark Cluckerburg!"
     break;
   }
   changeButtons()
@@ -289,7 +289,8 @@ function executeTwoMove(){
   // else 
 
   function bothMoves(){
-    console.log("fight!!!")
+    textBox1.innerHTML = "fight!"
+    textBox2.innerHTML = ""
     function playerOneHit(){
       switch (pOneMove){
         case "p1move1":
@@ -305,6 +306,7 @@ function executeTwoMove(){
         p1chicken.move4(p1chicken)
         break;
       }
+      displaydata()
     }
     function playerTwoHit(){
       if(compChicken === true){
@@ -324,34 +326,43 @@ function executeTwoMove(){
         p2chicken.move4(p2chicken)
         break;
       }
+      displaydata()
     }
     if (p1chicken.speed > p2chicken.speed){
-      console.log("p1 strikes first!")
-      playerOneHit()
-      playerTwoHit()
+      textBox1.innerHTML = "p1 strikes first!"
+      textBox2.innerHTML = ""
+      setTimeout(playerOneHit, 1000)
+      setTimeout(playerTwoHit, 3200)
     }
     else if (p2chicken.speed > p1chicken.speed){
-      console.log("p2 strikes first!")
-      playerTwoHit()
-      playerOneHit()
+      textBox1.innerHTML = "p2 strikes first!"
+      textBox2.innerHTML = ""
+      setTimeout(playerTwoHit, 1000)
+      setTimeout(playerOneHit, 3200)
     }
     else {
       var rand = Math.random()
       if (rand < 0.50){
-        playerTwoHit()
-        playerOneHit()
+        textBox1.innerHTML = "p2 strikes first!"
+        textBox2.innerHTML = ""
+        setTimeout(playerTwoHit, 1000)
+        setTimeout(playerOneHit, 3200)
       }
       else {
-        playerOneHit()
-        playerTwoHit()
+        textBox1.innerHTML = "p1 strikes first!"
+        textBox2.innerHTML = ""
+        setTimeout(playerOneHit, 1000)
+        setTimeout(playerTwoHit, 3200)
       }
     }
     function checkForKo(){
       if (p1chicken.heath <= 0){
-        console.log("p2 has won!")
+        textBox1.innerHTML = "p2 has won!"
+        textBox2.innerHTML = ""
       }
       else if (p2chicken.health <= 0){
-        console.log("p1 has won!")
+        textBox1.innerHTML = "p1 has won!"
+        textBox2.innerHTML = ""
       }
     }
     checkForKo()
@@ -359,7 +370,7 @@ function executeTwoMove(){
   }
 // else 
 
-// Chicken objects
+// All hail the Proto Chicken!
 var Chicken = {
   chicken_name: "Something",
   maxHealth: 0,
@@ -392,8 +403,8 @@ var Chicken = {
     target.health = target.health + (target.maxHealth / 15)
   },
   desperation:function(target, self){
-    target.health = target.health - (self.maxHealth - self.health) / 2
-  }
+    target.health = target.health - (self.maxHealth - self.health) / 1.5
+  },
 }
 
 function changeButtons(){

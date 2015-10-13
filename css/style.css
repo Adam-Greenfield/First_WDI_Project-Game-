@@ -1,0 +1,48 @@
+body {
+  text-align: center;
+
+}
+.playerSelect {
+  margin: 20px auto;
+}
+
+#startFight {
+  position: relative;
+  margin: 70px auto;
+  width: 100px;
+}
+
+.stats {
+  position: relative;
+  display: inline;
+}
+
+#playerOneStats{
+  margin: 50px;
+  position: relative;
+  display: inline-block;
+}
+
+#playerTwoStats{
+  margin: 50px;
+  position: relative;
+  display: inline-block;
+}
+
+.infoBox {
+  width: 300px;
+  height: 150px;
+  position: relative;
+  margin: 20px auto;
+  border: 10px solid black;
+}
+
+#info{
+  position: relative;
+  text-align: left;
+  margin: 10px;
+  font-size: 25px;
+} 
+
+
+
