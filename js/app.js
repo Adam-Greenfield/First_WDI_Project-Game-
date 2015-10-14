@@ -250,20 +250,20 @@ function fight(){
     textBox1.innerHTML = ""
     showText("#info1", "Player One chooses Bork-y!", 0, 50); 
     break;
-    case "Mark Cluckerburg":
+    case "Mwark Cluckerburg":
     p1chicken = Object.create(Chicken);
     p1chicken.health = 80,
     p1chicken.maxHealth = 80,
     p1chicken.speed = 10,
     p1chicken.armour = 3,
-    p1chicken.name = "Mark Cluckerburg"
+    p1chicken.name = "Mwark Cluckerburg"
     p1chicken.move1 = Chicken.slash
     p1chicken.move2 = Chicken.trip
     p1chicken.move3 = Chicken.vampireStrike
     p1chicken.move4 = Chicken.sacrifice
     textBox1.innerHTML = ""
-    // textBox1.innerHTML = "Player One chooses Mark Cluckerburg!"
-    showText("#info1", "Player One chooses Mark Cluckerburg!", 0, 50); 
+    // textBox1.innerHTML = "Player One chooses Mwark Cluckerburg!"
+    showText("#info1", "Player One chooses Mwark Cluckerburg!", 0, 50); 
     break;
   }
   switch (playerTwo) {
@@ -312,20 +312,20 @@ function fight(){
     textBox2.innerHTML = ""
     showText("#info2", "Player Two chooses Bork-y!", 0, 50); 
     break;
-    case "Mark Cluckerburg":
+    case "Mwark Cluckerburg":
     p2chicken = Object.create(Chicken);
     p2chicken.health = 80,
     p2chicken.maxHealth = 80,
     p2chicken.speed = 10,
     p2chicken.armour = 3,
-    p2chicken.name = "Mark Cluckerburg"
+    p2chicken.name = "Mwark Cluckerburg"
     p2chicken.move1 = Chicken.slash
     p2chicken.move2 = Chicken.trip
     p2chicken.move3 = Chicken.vampireStrike
     p2chicken.move4 = Chicken.sacrifice
-    // textBox2.innerHTML = "Player Two chooses Mark Cluckerburg!"
+    // textBox2.innerHTML = "Player Two chooses Mwark Cluckerburg!"
     textBox2.innerHTML = ""
-    showText("#info2", "Player Two chooses Mark Cluckerburg!", 0, 50); 
+    showText("#info2", "Player Two chooses Mwark Cluckerburg!", 0, 50); 
     break;
   }
   changeButtons()
@@ -649,7 +649,7 @@ function changeButtons(){
     playerOneMoveThree.innerHTML = "Armour Switch";
     playerOneMoveFour.innerHTML = "Restore";
     break;
-    case "Mark Cluckerburg":
+    case "Mwark Cluckerburg":
     playerOneMoveOne.innerHTML = "Slash";
     playerOneMoveTwo.innerHTML = "Topple";
     playerOneMoveThree.innerHTML = "Vamp Strike";
@@ -676,7 +676,7 @@ function changeButtons(){
     playerTwoMoveThree.innerHTML = "Armour Switch";
     playerTwoMoveFour.innerHTML = "Restore";
     break;
-    case "Mark Cluckerburg":
+    case "Mwark Cluckerburg":
     playerTwoMoveOne.innerHTML = "Slash";
     playerTwoMoveTwo.innerHTML = "Topple";
     playerTwoMoveThree.innerHTML = "Vamp Strike";
