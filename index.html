@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mother Cluckers</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <audio src="./css/Sounds/128-battle-vs-gym-leader-.mp3" id="mp31" preload="auto"></audio>
+  <audio src="./css/Sounds/129-victory-vs-gym-leader-.mp3" id="mp32" preload="auto"></audio>
+
+  
+</head>
+<body>
+<h1>MOTHER CLUCKERS</h1>
+<img src="http://images.lingscars.com/images/header/webcams/chicken-ani.gif" alt="">
+<h2>SHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIT</h2>
+  <div class="playerSelect">
+    <button id="playerOneButton" class="player" title="Click to select a chicken for Player One">Player 1 Choose</button>
+    <button id="playerTwoButton" class="player" title="Click to select a chicken for Player Two">Player 2 Choose</button>
+    <button id="AI_initiate" title="Choose Player One then hit this to initialise an AI opponent!">Fight the computer!</button>
+  </div>
+
+  <button id="Gary" class="test"><a>Gary</a></button>
+  <button id="Ash" class="test"><a>Ash</a></button>
+  <button id="Bork-y" class="test"><a>Bork-y</a></button>
+  <button id="Mark Cluckerburg" class="test"><a>Mark Cluckerburg</a></button>
+  <div>
+    <button id="startFight" title="start the fight">Fight!</button>
+  </div>
+  <div class="moves">
+  <div class="PlayerOneMoves">
+  <div>
+    <button class="p1moves"id="p1move1">move 1</button>
+    <button class="p1moves"id="p1move2">move 2</button>
+    </div>
+    <div>
+    <button class="p1moves"id="p1move3">move 3</button>
+    <button class="p1moves"id="p1move4">move 4</button>
+    </div>
+  </div>
+
+  <div class="PlayerTwoMoves">
+  <div>
+    <button class="p2moves"id="p2move1">move 1</button>
+    <button class="p2moves"id="p2move2">move 2</button>
+    </div>
+    <div>
+    <button class="p2moves"id="p2move3">move 3</button>
+    <button class="p2moves"id="p2move4">move 4</button>
+    </div>
+  </div>
+  </div>
+
+
+<article class="battlefield">
+
+
+
+  <div class="stats"
+    <div id="playerOneStats">
+      <p id="p1Health">Health: </p>
+      <p id="p1Speed">Speed: </p>
+      <p id="p1Armour">Armour: </p>
+    </div>
+
+    <div class="infoBox">
+      <p id="info1">...</p>
+      <p id="info2">...</p>
+    </div>
+  
+    <div id="playerTwoStats">
+      <p id="p2Health">Health: </p>
+      <p id="p2Speed">Speed: </p>
+      <p id="p2Armour">Armour: </p>
+  </div>
+</article>
+
+</body>
+<script type="text/javascript" src="./js/app.js"></script>
+</body>
+</html>
